@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<h3 class="text-center">Bill</h3>
+<a href="{%url "bill-form"%}" type="button" class="btn btn-outline-success">Add Bill</a>
+</br></br>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    {% for bill in bills %}
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                <strong>{{bill.budget.name|upper}}</strong>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">Payment Method</th>
+                            <td>{{bill.payment_method|upper}}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Amount</th>
+                            <td>{{bill.budget.amount}}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Payment Details</th>
+                            <td>{{bill.payment_details}}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Date</th>
+                            <td>{{bill.budget.date}}</td>
+                          </tr>
+                          <tr>
+                            <td><a href="{% url "bill-update" bill.id%}" class="btn btn-outline-primary">Edit Bill</a></td>
+                            <td align="right"><a href="{% url "delete-bill" bill.id%}" class="btn btn-outline-danger">Delete Bill</a></td>
+                          </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    
+</div>
+
+{% endblock content %}

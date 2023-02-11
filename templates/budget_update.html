@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<h3 class="text-center">Edit Budget</h3>
+<div>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-outline-secondary">Submit Budget</button>
+    </form>
+</div>
+
+{% endblock content %}

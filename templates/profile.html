@@ -1,0 +1,48 @@
+{% extends "base.html"%}
+{% block content %}
+
+<h1 class="text-center"><strong>PROFILE</strong></h1>
+<br>
+<div class="card">
+    <div class="card-body">
+        <table class="table">
+            <thead>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Username</th>
+                <td>{{user.profile.user|upper}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Profile Pic</th>
+                
+                <td><a href="{{user.profile.profile_pic.url}}">
+                        <img src="{{user.profile.profile_pic.url}}" class="rounded-circle" alt="..." style="height:100px;">
+                    </a>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Mobile number</th>
+                <td>{{user.profile.mobile_no}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Credit card</th>
+                <td>{{user.profile.creditcard_no}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Income amount</th>
+                <td>{{user.profile.income_amount}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Income date</th>
+                <td>{{user.profile.income_date}}</td>
+              </tr>
+            </tbody>
+          </table>
+        <a href="{%url "profile-form" user.id %}" role="button" class="btn btn-outline-secondary">Edit Profile</a>
+      
+    </div>
+  </div>
+<br>
+
+{% endblock %}

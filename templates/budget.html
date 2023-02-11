@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<h3 class="text-center">Budget</h3>
+<a href="{%url "budget-form"%}" type="button" class="btn btn-outline-success">Add Budget</a>
+</br></br>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    {% for budget in budget %}
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                <strong>{{budget.name|upper}}</strong>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">Amount</th>
+                            <td>{{budget.amount}}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Date</th>
+                            <td>{{budget.date}}</td>
+                          </tr>
+                          <tr>
+                            <td><a href="{%url "budget-update" budget.id %}" class="btn btn-outline-primary">Edit Budget</a></td>
+                            <td align="right"><a href="{%url "delete-budget" budget.id %}" class="btn btn-outline-danger">Delete Budget</a></td>
+                          </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    
+</div>
+
+{% endblock content %}
